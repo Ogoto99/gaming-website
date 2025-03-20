@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Player Tips</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Navbar -->
+    <header class="bg-gray-800 p-4 shadow-lg">
+        <nav class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Pro Player Tips</h1>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+                <li><a href="#" class="hover:text-yellow-400">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Search Bar -->
+    <section class="container mx-auto mt-8">
+        <div class="relative">
+            <input 
+                type="text" 
+                id="searchInput"
+                placeholder="Search tips..." 
+                class="w-full p-3 rounded-md bg-gray-700 focus:ring-2 focus:ring-yellow-400"
+                oninput="filterTips()"
+            >
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="container mx-auto mt-12">
+        <h2 class="text-xl font-bold border-b border-yellow-400 pb-2">Pro Player Tips</h2>
+        <div id="tipsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 mb-12">
+            <!-- Tip Cards -->
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="strategy beginner">
+                <h3 class="text-lg font-bold text-yellow-400">Beginner Strategy</h3>
+                <p class="mt-2 text-sm">Essential tips to get started in the game.</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="shooting advanced">
+                <h3 class="text-lg font-bold text-yellow-400">Advanced Shooting Techniques</h3>
+                <p class="mt-2 text-sm">Master precise shooting with these techniques.</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="teamwork pro">
+                <h3 class="text-lg font-bold text-yellow-400">Teamwork Pro Tips</h3>
+                <p class="mt-2 text-sm">Effective team strategies for pro-level gameplay.</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="movement skills speed">
+                <h3 class="text-lg font-bold text-yellow-400">Mastering Movement</h3>
+                <p class="mt-2 text-sm">Improve your in-game speed and agility for better results.</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="stealth tactics advanced">
+                <h3 class="text-lg font-bold text-yellow-400">Stealth Tactics</h3>
+                <p class="mt-2 text-sm">Learn how to sneak past enemies undetected.</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="weapons loadouts customization">
+                <h3 class="text-lg font-bold text-yellow-400">Weapons Loadouts</h3>
+                <p class="mt-2 text-sm">Customize your loadouts for maximum efficiency.</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="economy resource management">
+                <h3 class="text-lg font-bold text-yellow-400">Resource Management</h3>
+                <p class="mt-2 text-sm">Manage in-game resources for a tactical advantage.</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="maps navigation control">
+                <h3 class="text-lg font-bold text-yellow-400">Map Navigation</h3>
+                <p class="mt-2 text-sm">Master map control to dominate your opponents.</p>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-lg p-6" data-keywords="mental focus preparation tips">
+                <h3 class="text-lg font-bold text-yellow-400">Mental Preparation</h3>
+                <p class="mt-2 text-sm">Stay focused and prepared for high-stakes matches.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">About Gaming Nexus</h3>
+                <p class="text-gray-400 text-sm mt-2">Your ultimate destination for gaming adventures, news, and events.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">Quick Links</h3>
+                <ul class="mt-2 space-y-2 text-gray-400">
+                    <li><a href="index.html" class="hover:text-pink-500">Home</a></li>
+                    <li><a href="games.html" class="hover:text-pink-500">Games</a></li>
+                    <li><a href="community.html" class="hover:text-pink-500">Community</a></li>
+                    <li><a href="contact.html" class="hover:text-pink-500">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">Stay Connected</h3>
+                <form class="flex flex-col mt-2">
+                    <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <button class="bg-pink-500 hover:bg-pink-600 text-white mt-2 px-4 py-2 rounded">Subscribe</button>
+                </form>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://www.facebook.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-facebook"></i><!-- Facebook Icon -->
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-x-twitter"></i><!-- Twitter Icon -->
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-instagram"></i><!-- Instagram Icon -->
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-youtube"></i><!-- YouTube Icon -->
+                    </a>
+                    <a href="https://www.discord.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-discord"></i><!-- Discord Icon -->
+                    </a>
+                    <a href="https://www.reddit.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-reddit"></i><!-- Reddit Icon -->
+                    </a>
+                </div>                
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function filterTips() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const tips = document.querySelectorAll('#tipsContainer > div');
+
+            tips.forEach(tip => {
+                const keywords = tip.getAttribute('data-keywords').toLowerCase();
+                if (keywords.includes(input)) {
+                    tip.style.display = 'block';
+                } else {
+                    tip.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

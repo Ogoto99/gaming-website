@@ -4,111 +4,276 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Add any custom CSS if needed */
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans">
-
     <!-- Navbar -->
     <header class="bg-gray-800 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-green-500">GameQuest</h1>
+            <h1 class="text-3xl font-bold text-green-500">ShadowCircuit</h1>
             <nav>
                 <ul class="flex space-x-6">
                     <li><a href="index.html" class="hover:text-green-400">Home</a></li>
                     <li><a href="leaderboards.html" class="hover:text-green-400">Leaderboards</a></li>
-                    <li><a href="store.html" class="hover:text-green-400">Store</a></li>
+                    <li><a href="games.html" class="hover:text-green-400">Games</a></li>
                     <li><a href="profile.html" class="text-green-400">Profile</a></li>
                 </ul>
             </nav>
         </div>
-    </header>
+    </header>      
 
-    <!-- Profile Section -->
-    <main class="max-w-5xl mx-auto mt-8 px-4">
-        <section id="profileCard" class="bg-gray-800 rounded-lg p-6 shadow-md">
-            <div class="flex items-center space-x-6">
-                <img src="https://via.placeholder.com/150" alt="Gamer Avatar" id="avatar" class="rounded-full h-32 w-32 border-4 border-green-500">
-                <div>
-                    <h2 id="playerName" class="text-4xl font-bold">PlayerName123</h2>
-                    <p id="playerInfo" class="text-sm text-gray-400">Level 45 | Warrior Class</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section id="stats" class="bg-gray-800 rounded-lg p-6 shadow-md mt-6">
-            <h3 class="text-2xl font-bold mb-4">Player Statistics</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
-                    <h4 class="text-lg font-bold">Games Played</h4>
-                    <p id="gamesPlayed" class="text-3xl font-bold text-green-500">325</p>
-                </div>
-                <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
-                    <h4 class="text-lg font-bold">Achievements</h4>
-                    <p id="achievements" class="text-3xl font-bold text-green-500">57</p>
-                </div>
-                <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
-                    <h4 class="text-lg font-bold">Win Rate</h4>
-                    <p id="winRate" class="text-3xl font-bold text-green-500">72%</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Friends List Section -->
-        <section id="friendsList" class="bg-gray-800 rounded-lg p-6 shadow-md mt-6">
-            <h3 class="text-2xl font-bold mb-4">Friends List</h3>
-            <ul class="space-y-4">
-                <li class="flex items-center space-x-4">
-                    <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full h-12 w-12">
-                    <p class="font-bold">GameBuddy1</p>
-                </li>
-                <li class="flex items-center space-x-4">
-                    <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full h-12 w-12">
-                    <p class="font-bold">ProGamer92</p>
-                </li>
-                <li class="flex items-center space-x-4">
-                    <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full h-12 w-12">
-                    <p class="font-bold">EliteHunterX</p>
-                </li>
-            </ul>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="mt-12 bg-gray-800 py-4">
-        <div class="max-w-7xl mx-auto text-center text-gray-500">
-            <p>&copy; 2025 GameQuest. All rights reserved.</p>
+<!-- Profile Section (Display Avatar) -->
+<div id="profile" class="bg-gray-800 rounded-lg p-6 shadow-md">
+    <h2 class="text-2xl font-bold mb-4 text-green-500">Your Profile</h2>
+    <img id="profileAvatar" src="assets/default-avatar.png" alt="Profile Avatar" class="w-32 h-32 rounded-full border border-gray-600">
+    <p id="playerName" class="text-gray-200 mt-4">Player Name: Default</p>
+    <p id="playerInfo" class="text-sm text-gray-400">Level 52 | Mage Class</p>
+    <div class="mt-2">
+        <span>Level Progress:</span>
+        <div class="w-full bg-gray-700 rounded mt-1">
+            <div id="levelProgressBar" class="h-2 bg-green-500 rounded" style="width: 70%;"></div>
         </div>
-    </footer>
+        <button id="editProfileButton" class="bg-green-500 text-gray-900 px-4 py-2 rounded hover:bg-green-600 mt-4">Edit Profile</button>
+    </div>
+</div>
 
-    <!-- JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Dynamic data
-            const profileData = {
-                playerName: "ShadowWarrior99",
-                playerInfo: "Level 52 | Mage Class",
-                avatarUrl: "https://via.placeholder.com/150",
-                stats: {
-                    gamesPlayed: 412,
-                    achievements: 68,
-                    winRate: "80%"
-                }
-            };
+<!-- Profile Editor Section -->
+<div id="profileEditor" class="bg-gray-800 rounded-lg p-6 shadow-md hidden">
+    <h2 class="text-2xl font-bold mb-4 text-green-500">Edit Your Profile</h2>
+    <form id="editProfileForm">
+        <div class="mb-4">
+            <label for="editPlayerName" class="block text-sm font-bold">Player Name</label>
+            <input id="editPlayerName" type="text" placeholder="Enter new gamer tag" class="w-full px-4 py-2 rounded bg-gray-700 text-gray-200 border border-gray-600">
+        </div>
+        <div class="mb-4">
+            <label for="editPlayerInfo" class="block text-sm font-bold">Player Info</label>
+            <input id="editPlayerInfo" type="text" placeholder="Enter new player info" class="w-full px-4 py-2 rounded bg-gray-700 text-gray-200 border border-gray-600">
+        </div>
+        <!-- Avatar Section -->
+        <div class="mb-4">
+            <label for="defaultAvatarOptions" class="block text-sm font-bold">Choose an Avatar</label>
+            <div class="flex space-x-4">
+                <!-- Default Avatars -->
+                <img src="assets/3d-music-related-scene.jpg" alt="Avatar 1" class="w-16 h-16 rounded-full border border-gray-600 cursor-pointer" onclick="selectAvatar('3d-music-related-scene.jpg')">
+                <img src="assets/androgynous-avatar-non-binary-queer-person.jpg" alt="Avatar 2" class="w-16 h-16 rounded-full border border-gray-600 cursor-pointer" onclick="selectAvatar('androgynous-avatar-non-binary-queer-person.jpg')">
+                <img src="assets/close-up-cartoon-characters-with-headphones.jpg" alt="Avatar 3" class="w-16 h-16 rounded-full border border-gray-600 cursor-pointer" onclick="selectAvatar('close-up-cartoon-characters-with-headphones.jpg')">
+            </div>
+        </div>
+        <div class="mb-4">
+            <button type="button" id="confirmAvatarButton" class="bg-blue-500 text-gray-900 px-4 py-2 rounded hover:bg-blue-600">OK</button>
+        </div>
+        <div class="mb-4">
+            <label for="editAvatar" class="block text-sm font-bold">Or Upload New Avatar</label>
+            <div class="flex items-center">
+                <input id="editAvatar" type="file" accept="image/*" class="px-4 py-2 rounded bg-gray-700 text-gray-200 border border-gray-600">
+            </div>
+        </div>
+        <button type="submit" class="bg-green-500 text-gray-900 px-4 py-2 rounded hover:bg-green-600">Save Changes</button>
+        <button type="button" id="cancelEditButton" class="bg-red-500 text-gray-900 px-4 py-2 rounded hover:bg-red-600 ml-2">Cancel</button>
+    </form>
+</div>
 
-            // Update profile section
-            document.getElementById('playerName').textContent = profileData.playerName;
-            document.getElementById('playerInfo').textContent = profileData.playerInfo;
-            document.getElementById('avatar').src = profileData.avatarUrl;
+ <!-- Statistics -->
+ <section id="stats" class="bg-gray-800 rounded-lg p-6 shadow-md mt-6">
+    <h3 class="text-2xl font-bold mb-4">Player Statistics</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
+            <h4 class="text-lg font-bold">Games Played</h4>
+            <p id="gamesPlayed" class="text-3xl font-bold text-green-500">412</p>
+        </div>
+        <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
+            <h4 class="text-lg font-bold">Achievements</h4>
+            <p id="achievements" class="text-3xl font-bold text-green-500">68</p>
+        </div>
+        <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
+            <h4 class="text-lg font-bold">Win Rate</h4>
+            <p id="winRate" class="text-3xl font-bold text-green-500">80%</p>
+        </div>
+    </div>
+</section>
 
-            // Update stats section
-            document.getElementById('gamesPlayed').textContent = profileData.stats.gamesPlayed;
-            document.getElementById('achievements').textContent = profileData.stats.achievements;
-            document.getElementById('winRate').textContent = profileData.stats.winRate;
+<!-- Friends List -->
+<section id="friendsList" class="bg-gray-800 rounded-lg p-6 shadow-md mt-6">
+    <h3 class="text-2xl font-bold mb-4">Friends List</h3>
+    <ul class="space-y-4">
+        <li class="flex items-center space-x-4">
+            <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full w-12 h-12">
+            <p class="font-bold">GameBuddy1</p>
+        </li>
+        <li class="flex items-center space-x-4">
+            <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full w-12 h-12">
+            <p class="font-bold">ProGamer92</p>
+        </li>
+        <li class="flex items-center space-x-4">
+            <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full w-12 h-12">
+            <p class="font-bold">EliteHunterX</p>
+        </li>
+    </ul>
+</section>
+
+<!-- Highlights -->
+<section id="showcase" class="bg-gray-800 rounded-lg p-6 shadow-md mt-6 mb-6"> <!-- Added mb-6 for space below -->
+    <h3 class="text-2xl font-bold mb-4">Highlights</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-700 rounded-lg shadow-lg p-4">
+            <img src="https://via.placeholder.com/300" alt="Highlight Screenshot" class="w-full rounded">
+            <p class="mt-2 text-sm text-gray-400">Epic Victory - Match #123</p>
+        </div>
+        <div class="bg-gray-700 rounded-lg shadow-lg p-4">
+            <img src="https://via.placeholder.com/300" alt="Highlight Screenshot" class="w-full rounded">
+            <p class="mt-2 text-sm text-gray-400">Clan Battle MVP</p>
+        </div>
+    </div>
+</section>
+</main>
+
+<!-- JavaScript -->
+<script>
+    // Variables to store selected and uploaded avatar
+    let selectedAvatar = null;
+    let uploadedAvatar = null;
+
+    // Function to handle avatar selection
+    function selectAvatar(avatarUrl) {
+        selectedAvatar = avatarUrl;
+        uploadedAvatar = null; // Reset uploaded avatar
+
+        // Highlight the selected avatar
+        document.querySelectorAll('.cursor-pointer').forEach((img) => {
+            img.classList.remove('border-blue-500');
         });
-    </script>
+        event.target.classList.add('border-blue-500');
+    }
+
+    // Event listener for avatar upload
+    document.getElementById('editAvatar').addEventListener('change', (event) => {
+        if (event.target.files && event.target.files[0]) {
+            uploadedAvatar = URL.createObjectURL(event.target.files[0]);
+            selectedAvatar = null; // Reset selected avatar
+        }
+    });
+
+    // Event listener for the "OK" button
+    document.getElementById('confirmAvatarButton').addEventListener('click', () => {
+        const profileAvatar = document.querySelector('#profileAvatar');
+        if (selectedAvatar) {
+            profileAvatar.src = `assets/${selectedAvatar}`;
+        } else if (uploadedAvatar) {
+            profileAvatar.src = uploadedAvatar;
+        } else {
+            alert('Please select or upload an avatar before confirming.');
+        }
+    });
+
+    // Event listener for the "Edit Profile" button
+    document.getElementById('editProfileButton').addEventListener('click', () => {
+        document.getElementById('profileEditor').classList.remove('hidden');
+        document.getElementById('profile').classList.add('hidden');
+        // Pre-fill editor fields with current values
+        document.getElementById('editPlayerName').value = document.getElementById('playerName').textContent.replace('Player Name: ', '');
+        document.getElementById('editPlayerInfo').value = document.getElementById('playerInfo').textContent;
+    });
+
+    // Event listener for "Cancel" button
+    document.getElementById('cancelEditButton').addEventListener('click', () => {
+        document.getElementById('profileEditor').classList.add('hidden');
+        document.getElementById('profile').classList.remove('hidden');
+    });
+
+    // Event listener for "Save Changes" button
+    document.getElementById('editProfileForm').addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent form submission
+
+        // Get new profile values
+        const newPlayerName = document.getElementById('editPlayerName').value.trim();
+        const newPlayerInfo = document.getElementById('editPlayerInfo').value.trim();
+        const profileAvatar = document.querySelector('#profileAvatar');
+
+        // Validate input
+        if (!newPlayerName || !newPlayerInfo) {
+            alert('Please fill in all fields before saving.');
+            return;
+        }
+
+        // Update UI instantly
+        document.getElementById('playerName').textContent = `Player Name: ${newPlayerName}`;
+        document.getElementById('playerInfo').textContent = newPlayerInfo;
+
+        // Update avatar if a new one is selected or uploaded
+        if (selectedAvatar) {
+            profileAvatar.src = `assets/${selectedAvatar}`;
+        } else if (uploadedAvatar) {
+            profileAvatar.src = uploadedAvatar;
+        }
+
+        // Save changes to localStorage
+        const profileData = {
+            playerName: newPlayerName,
+            playerInfo: newPlayerInfo,
+            avatar: profileAvatar.src,
+        };
+        localStorage.setItem('profileData', JSON.stringify(profileData));
+
+        // Hide editor and show profile
+        document.getElementById('profileEditor').classList.add('hidden');
+        document.getElementById('profile').classList.remove('hidden');
+        alert('Profile updated and saved!');
+    });
+
+    // Function to load profile data from localStorage
+    function loadProfileData() {
+        const storedData = localStorage.getItem('profileData');
+        if (storedData) {
+            const profileData = JSON.parse(storedData);
+
+            // Update UI with stored values
+            document.getElementById('playerName').textContent = `Player Name: ${profileData.playerName}`;
+            document.getElementById('playerInfo').textContent = profileData.playerInfo;
+            document.querySelector('#profileAvatar').src = profileData.avatar;
+        }
+    }
+
+    // Load profile data on page load
+    window.addEventListener('load', loadProfileData);
+</script>
+
+<!-- Footer -->
+<footer class="bg-gray-800 py-8">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">About Gaming Nexus</h3>
+            <p class="text-gray-400 text-sm mt-2">Your ultimate destination for gaming adventures, news, and events.</p>
+        </div>
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">Quick Links</h3>
+            <ul class="mt-2 space-y-2 text-gray-400">
+                <li><a href="games.html" class="hover:text-pink-500">Games</a></li>
+                <li><a href="community.html" class="hover:text-pink-500">Community</a></li>
+                <li><a href="events.html" class="hover:text-pink-500">Events</a></li>
+                <li><a href="contact.html" class="hover:text-pink-500">Contact Us</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">Stay Connected</h3>
+            <form class="flex flex-col mt-2">
+                <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                <button class="bg-pink-500 hover:bg-pink-600 text-white mt-2 px-4 py-2 rounded">Subscribe</button>
+            </form>
+            <div class="flex space-x-4 mt-4">
+                <a href="#" class="hover:text-pink-500">[FB]</a>
+                <a href="#" class="hover:text-pink-500">[TW]</a>
+                <a href="#" class="hover:text-pink-500">[IG]</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript for Mobile Navigation -->
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+        const nav = document.querySelector('#navbar ul');
+        nav.classList.toggle('hidden');
+    });
+</script>
 </body>
 </html>

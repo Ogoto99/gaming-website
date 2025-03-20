@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Nexus</title>
-    <!-- TailwindCSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ShadowCircuit</title>
+        <!-- TailwindCSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Font Awesome for Icons -->
+        <script src="https://kit.fontawesome.com/e3f4715c40.js" crossorigin="anonymous"></script>
+    </head>    
 <body class="bg-gray-900 text-white font-sans">
 
     <!-- Dynamic Navbar -->
     <div id="navbar" class="bg-gray-800 shadow-md">
         <nav class="container mx-auto flex justify-between items-center p-4">
-            <a href="index.html" class="text-xl font-bold text-pink-500 hover:text-white">Gaming Nexus</a>
+            <a href="index.html" class="text-xl font-bold text-pink-500 hover:text-white">ShadowCircuit</a>
             <ul class="hidden md:flex space-x-8 items-center">
                 <li><a href="games.html" class="text-gray-300 hover:text-pink-500">Games</a></li>
                 <li><a href="news.html" class="text-gray-300 hover:text-pink-500">News</a></li>
@@ -63,13 +65,12 @@
                 <article class="bg-gray-800 p-6 rounded-lg shadow-md hover:scale-105 transform transition">
                     <h3 class="text-xl font-semibold mb-3">Community Highlights</h3>
                     <p class="text-gray-400">Explore what’s happening in the gaming community.</p>
-                    <a href="news-community.html" class="text-pink-500 hover:underline mt-2 inline-block">Read More</a>
+                    <a href="community.html" class="text-pink-500 hover:underline mt-2 inline-block">Read More</a>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 py-8">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -92,13 +93,28 @@
                     <button class="bg-pink-500 hover:bg-pink-600 text-white mt-2 px-4 py-2 rounded">Subscribe</button>
                 </form>
                 <div class="flex space-x-4 mt-4">
-                    <a href="#" class="hover:text-pink-500">[FB]</a>
-                    <a href="#" class="hover:text-pink-500">[TW]</a>
-                    <a href="#" class="hover:text-pink-500">[IG]</a>
-                </div>
+                    <a href="https://www.facebook.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-facebook"></i><!-- Facebook Icon -->
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-x-twitter"></i><!-- Twitter Icon -->
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-instagram"></i><!-- Instagram Icon -->
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-youtube"></i><!-- YouTube Icon -->
+                    </a>
+                    <a href="https://www.discord.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-discord"></i><!-- Discord Icon -->
+                    </a>
+                    <a href="https://www.reddit.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                        <i class="fa-brands fa-square-reddit"></i><!-- Reddit Icon -->
+                    </a>
+                </div>                
             </div>
         </div>
-    </footer>
+    </footer>    
 
     <!-- JavaScript for Mobile Navigation -->
     <script>

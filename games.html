@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/e3f4715c40.js" crossorigin="anonymous"></script>
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function addToCart(gameName, gamePrice) {
+            const game = { name: gameName, price: gamePrice };
+            cart.push(game);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+
+        function searchGames() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const selectedCategory = document.getElementById('category').value;
+            const selectedPriceRange = document.getElementById('price-range').value;
+
+            const games = document.querySelectorAll('.game');
+            games.forEach(game => {
+                const gameName = game.getAttribute('data-name').toLowerCase();
+                const gameCategory = game.getAttribute('data-category');
+                const gamePrice = parseFloat(game.getAttribute('data-price'));
+
+                const nameMatch = gameName.includes(searchInput);
+                const categoryMatch = selectedCategory === 'all' || gameCategory === selectedCategory;
+                let priceMatch = true;
+
+                if (selectedPriceRange === 'low') {
+                    priceMatch = gamePrice < 20;
+                } else if (selectedPriceRange === 'medium') {
+                    priceMatch = gamePrice >= 20 && gamePrice <= 50;
+                } else if (selectedPriceRange === 'high') {
+                    priceMatch = gamePrice > 50;
+                }
+
+                if (nameMatch && categoryMatch && priceMatch) {
+                    game.style.display = 'block';
+                } else {
+                    game.style.display = 'none';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const cartBadge = document.getElementById('cart-count');
+            cartBadge.textContent = cart.length; // Updates cart count when the page loads
+        });
+    </script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-lg font-bold">Games Store</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <input 
+                    type="text" 
+                    placeholder="Search games..." 
+                    id="search-input" 
+                    class="px-2 py-1 rounded border border-gray-300 text-black"
+                />
+                <button onclick="searchGames()" class="bg-blue-500 text-white px-4 py-1 rounded">Search</button>
+                <div class="relative">
+                    <!-- Shopping Cart Button -->
+                    <a href="checkout.html" id="cart-btn" class="relative flex items-center text-white">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs px-2">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Filters Section -->
+    <div class="bg-white p-4 shadow mt-2 container mx-auto">
+        <h2 class="text-lg font-bold mb-4">Filters</h2>
+        <div class="flex gap-4">
+            <div>
+                <label for="category" class="block font-medium">Category</label>
+                <select id="category" class="border rounded px-2 py-1">
+                    <option value="all">All</option>
+                    <option value="action">Action</option>
+                    <option value="puzzle">Puzzle</option>
+                    <option value="multiplayer">Multiplayer</option>
+                </select>
+            </div>
+            <div>
+                <label for="price-range" class="block font-medium">Price Range</label>
+                <select id="price-range" class="border rounded px-2 py-1">
+                    <option value="all">All</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Games Section -->
+    <div id="games-section" class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 mb-8">
+        <div class="game bg-white shadow rounded p-4" data-name="Game 1" data-category="action" data-price="19.99">
+            <img src="game1.jpg" alt="Game 1" class="w-full h-40 object-cover mb-2 rounded">
+            <h3 class="text-lg font-bold">Game 1</h3>
+            <p class="text-gray-600">Description of game 1.</p>
+            <p class="text-blue-600 font-bold mt-2">$19.99</p>
+            <button onclick="addToCart('Game 1', 19.99)" class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Add to Cart</button>
+        </div>
+        <div class="game bg-white shadow rounded p-4" data-name="Game 2" data-category="puzzle" data-price="29.99">
+            <img src="game2.jpg" alt="Game 2" class="w-full h-40 object-cover mb-2 rounded">
+            <h3 class="text-lg font-bold">Game 2</h3>
+            <p class="text-gray-600">Description of game 2.</p>
+            <p class="text-blue-600 font-bold mt-2">$29.99</p>
+            <button onclick="addToCart('Game 2', 29.99)" class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Add to Cart</button>
+        </div>
+        <!-- Additional Game Cards -->
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">About Gaming Nexus</h3>
+                <p class="text-gray-400 text-sm mt-2">Your ultimate destination for gaming adventures, news, and events.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">Quick Links</h3>
+                <ul class="mt-2 space-y-2 text-gray-400">
+                    <li><a href="games.html" class="hover:text-pink-500">Games</a></li>
+                    <li><a href="community.html" class="hover:text-pink-500">Community</a></li>
+                    <li><a href="events.html" class="hover:text-pink-500">Events</a></li>
+                    <li><a href="contact.html" class="hover:text-pink-500">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">Stay Connected</h3>
+                <form class="flex flex-col mt-2">
+                    <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <button class="bg-pink-500 hover:bg-pink-600 text-white mt-2 px-4 py-2 rounded">Subscribe</button>
+                </form>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-pink-500 text-2xl">Facebook</a>
+                    <a href="#" class="text-gray-400 hover:text-pink-500 text-2xl">Twitter</a>
+                    <a href="#" class="text-gray-400 hover:text-pink-500 text-2xl">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

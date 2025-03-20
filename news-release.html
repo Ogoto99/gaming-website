@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Releases</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/e3f4715c40.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <!-- Header Section -->
+  <header class="bg-gray-800 shadow-md py-6">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-4xl font-bold">ShadowCircuit</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="games.html" class="hover:underline">Games</a></li>
+          <li><a href="profile.html" class="hover:underline">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative text-center py-16 bg-cover bg-center" style="background-image: url('https://example.com/hero-bg.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <h2 class="relative text-5xl font-bold">Discover the Hottest New Releases</h2>
+    <p class="relative mt-4 text-lg">Stay ahead of the curve with the latest games and expansions.</p>
+    <button 
+      id="explore-button" 
+      class="relative mt-6 px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-semibold">
+      Explore Now
+    </button>
+  </section>
+
+  <!-- New Releases Section -->
+<section id="new-releases" class="py-10">
+  <div class="container mx-auto px-4">
+    <h3 class="text-3xl font-bold mb-6">Newly Released Games</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-gray-800 p-4 rounded shadow-lg hover:shadow-2xl transition-shadow">
+        <img src="assets/assaain.avif" alt="Game 1" class="w-full h-64 object-contain rounded mb-4 bg-gray-900">
+        <h4 class="text-xl font-bold">Assasin's Creed Shadows</h4>
+        <p class="mt-2 text-sm">This isn't just a brand-new adventure – it's a bold new chapter in the acclaimed series that introduces a new way to play (we've never seen anything like Yasuke), but also new stealth mechanics that have us truly feeling like a master assassin.</p>
+        <button class="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded text-white">Learn More</button>
+      </div>
+      <!-- Card 2 -->
+      <div class="bg-gray-800 p-4 rounded shadow-lg hover:shadow-2xl transition-shadow">
+        <img src="assets/ps5-games-horizon-forbidden-west-image-block-01-en-28jul21.webp" alt="Game 2" class="w-full h-64 object-contain rounded mb-4 bg-gray-900">
+        <h4 class="text-xl font-bold">Horizon Forbidden West</h4>
+        <p class="mt-2 text-sm">Explore distant lands, fight bigger and more awe-inspiring machines, and encounter astonishing new tribes as you return to the far-future, post-apocalyptic world of Horizon.</p>
+        <button class="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded text-white">Learn More</button>
+      </div>
+      <!-- Card 3 -->
+      <div class="bg-gray-800 p-4 rounded shadow-lg hover:shadow-2xl transition-shadow">
+        <img src="assets/ps5-games-ghost-of-tsushima-image-block-02-en-14oct21.webp" alt="Game 3" class="w-full h-64 object-contain rounded mb-4 bg-gray-900">
+        <h4 class="text-xl font-bold">Ghost of Tsushima</h4>
+        <p class="mt-2 text-sm">Forge a new path and wage an unconventional war for the freedom of Tsushima. Challenge opponents with your katana, master the bow to eliminate distant threats, develop stealth tactics to ambush enemies and explore a new story on Iki Island.</p>
+        <button class="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded text-white">Learn More</button>
+      </div>
+      <!-- Card 4 -->
+      <div class="bg-gray-800 p-4 rounded shadow-lg hover:shadow-2xl transition-shadow">
+        <img src="assets/ps5-games-gt7-hub-image-block-01-en-10mar22.webp" alt="Game 3" class="w-full h-64 object-contain rounded mb-4 bg-gray-900">
+        <h4 class="text-xl font-bold">Gran Turismo 7</h4>
+        <p class="mt-2 text-sm">Whether you’re a competitive or casual racer, collector, tuner, livery designer or photographer – find your line with a staggering collection of game modes including fan-favorites like GT Campaign, Arcade and Driving School.</p>
+        <button class="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded text-white">Learn More</button>
+      </div>
+      <!-- Card 5 -->
+      <div class="bg-gray-800 p-4 rounded shadow-lg hover:shadow-2xl transition-shadow">
+        <img src="assets/god-of-war-raganok-clean-keyart-01-en-10mar22.webp" alt="Game 3" class="w-full h-64 object-contain rounded mb-4 bg-gray-900">
+        <h4 class="text-xl font-bold">God of War Ragnarok</h4>
+        <p class="mt-2 text-sm">Atreus seeks knowledge to help him understand the prophecy of “Loki” and establish his role in Ragnarök. Kratos must decide whether he will be chained by the fear of repeating his mistakes or break free of his past to be the father Atreus needs.</p>
+        <button class="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded text-white">Learn More</button>
+      </div>
+      <!-- Card 6 -->
+      <div class="bg-gray-800 p-4 rounded shadow-lg hover:shadow-2xl transition-shadow">
+        <img src="assets/deadside.avif" alt="Game 3" class="w-full h-64 object-contain rounded mb-4 bg-gray-900">
+        <h4 class="text-xl font-bold">Deadside</h4>
+        <p class="mt-2 text-sm">This is a hardcore multiplayer survival shooter featuring a vast open world, blending intense PvP and PvE action with base-building, exploration, and tactical gameplay.</p>
+        <button class="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded text-white">Learn More</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer Section -->
+  <footer class="bg-gray-800 py-8">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">About Gaming Nexus</h3>
+            <p class="text-gray-400 text-sm mt-2">Your ultimate destination for gaming adventures, news, and events.</p>
+        </div>
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">Quick Links</h3>
+            <ul class="mt-2 space-y-2 text-gray-400">
+                <li><a href="index.html" class="hover:text-pink-500">Home</a></li>
+                <li><a href="games.html" class="hover:text-pink-500">Games</a></li>
+                <li><a href="community.html" class="hover:text-pink-500">Community</a></li>
+                <li><a href="contact.html" class="hover:text-pink-500">Contact Us</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">Stay Connected</h3>
+            <form class="flex flex-col mt-2">
+                <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                <button class="bg-pink-500 hover:bg-pink-600 text-white mt-2 px-4 py-2 rounded">Subscribe</button>
+            </form>
+            <div class="flex space-x-4 mt-4">
+                <a href="https://www.facebook.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-facebook"></i><!-- Facebook Icon -->
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-x-twitter"></i><!-- Twitter Icon -->
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-instagram"></i><!-- Instagram Icon -->
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-youtube"></i><!-- YouTube Icon -->
+                </a>
+                <a href="https://www.discord.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-discord"></i><!-- Discord Icon -->
+                </a>
+                <a href="https://www.reddit.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-reddit"></i><!-- Reddit Icon -->
+                </a>
+            </div>                
+        </div>
+    </div>
+</footer>    
+
+  <script>
+    // Add event listener for button click
+    document.getElementById('explore-button').addEventListener('click', function() {
+      // Scroll to the "New Releases" section
+      document.getElementById('new-releases').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

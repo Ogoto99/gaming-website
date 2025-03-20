@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/e3f4715c40.js" crossorigin="anonymous"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e3a8a',
+            secondary: '#4ade80',
+            gold: '#ffd700',
+            silver: '#c0c0c0',
+            bronze: '#cd7f32',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+  <header class="bg-primary p-4 shadow-md flex justify-between items-center">
+    <h1 class="text-2xl font-bold">ShadowCircuit Community</h1>
+    <nav>
+      <ul class="flex space-x-4">
+        <li><a href="index.html" class="hover:text-secondary">Home</a></li>
+        <li><a href="games.html" class="hover:text-secondary">Games</a></li>
+        <li><a href="community.html" class="text-secondary">Community</a></li>
+        <li><a href="profile.html" class="hover:text-secondary">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="p-6">
+    <!-- Community Highlights Section -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Community Highlights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-gray-800 p-4 rounded shadow-md">
+          <h3 class="text-lg font-bold">Top Player</h3>
+          <p class="mt-2">Congratulations to Player123 for reaching level 99!</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded shadow-md">
+          <h3 class="text-lg font-bold">Event Spotlight</h3>
+          <p class="mt-2">Join us for the upcoming Battle Royale tournament this weekend!</p>
+        </div>
+        <div class="bg-gray-800 p-4 rounded shadow-md">
+          <h3 class="text-lg font-bold">Community Art</h3>
+          <p class="mt-2">Check out amazing fan art in the Gallery section!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forums Section -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Forums</h2>
+      <div>
+        <ul class="space-y-4">
+          <li class="bg-gray-800 p-4 rounded shadow-md">
+            <h3 class="font-bold">Latest Game Updates</h3>
+            <p class="mt-2">Discuss the newest features added to your favorite games.</p>
+            <button class="mt-2 px-3 py-1 bg-secondary text-gray-900 rounded">Join Discussion</button>
+          </li>
+          <li class="bg-gray-800 p-4 rounded shadow-md">
+            <h3 class="font-bold">General Chat</h3>
+            <p class="mt-2">Talk about anything and everything with fellow gamers.</p>
+            <button class="mt-2 px-3 py-1 bg-secondary text-gray-900 rounded">Join Discussion</button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Dynamic Leaderboard -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Leaderboard</h2>
+      <div id="leaderboard" class="bg-gray-800 p-4 rounded shadow-md">
+        <ul class="space-y-2"></ul>
+      </div>
+      <button id="viewFullLeaderboard" class="mt-4 px-3 py-2 bg-secondary text-gray-900 rounded">See Full Leaderboard</button>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 py-8">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">About Gaming Nexus</h3>
+            <p class="text-gray-400 text-sm mt-2">Your ultimate destination for gaming adventures, news, and events.</p>
+        </div>
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">Quick Links</h3>
+            <ul class="mt-2 space-y-2 text-gray-400">
+                <li><a href="index.html" class="hover:text-pink-500">Home</a></li>
+                <li><a href="games.html" class="hover:text-pink-500">Games</a></li>
+                <li><a href="community.html" class="hover:text-pink-500">Community</a></li>
+                <li><a href="contact.html" class="hover:text-pink-500">Contact Us</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">Stay Connected</h3>
+            <form class="flex flex-col mt-2">
+                <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                <button class="bg-pink-500 hover:bg-pink-600 text-white mt-2 px-4 py-2 rounded">Subscribe</button>
+            </form>
+            <div class="flex space-x-4 mt-4">
+                <a href="https://www.facebook.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-facebook"></i><!-- Facebook Icon -->
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-x-twitter"></i><!-- Twitter Icon -->
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-instagram"></i><!-- Instagram Icon -->
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-youtube"></i><!-- YouTube Icon -->
+                </a>
+                <a href="https://www.discord.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-discord"></i><!-- Discord Icon -->
+                </a>
+                <a href="https://www.reddit.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-reddit"></i><!-- Reddit Icon -->
+                </a>
+            </div>                
+        </div>
+    </div>
+</footer>    
+
+  <script>
+    const leaderboardData = [
+      { name: "Player123", score: 1200, matchesPlayed: 250, achievements: 50, winRate: "60%" },
+      { name: "ProGamer456", score: 1100, matchesPlayed: 230, achievements: 40, winRate: "55%" },
+      { name: "Newbie789", score: 900, matchesPlayed: 150, achievements: 30, winRate: "50%" },
+      { name: "GamerPro999", score: 850, matchesPlayed: 140, achievements: 25, winRate: "45%" },
+      { name: "CasualPlayer", score: 800, matchesPlayed: 100, achievements: 15, winRate: "40%" }
+    ];
+
+    const leaderboard = document.getElementById('leaderboard').querySelector('ul');
+
+    // Display top 3 players initially
+    leaderboardData.slice(0, 3).forEach((player, index) => {
+      const listItem = document.createElement('li');
+      listItem.className = 'flex flex-col bg-gray-700 p-4 rounded space-y-2';
+      const medalColor = index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : null;
+      listItem.innerHTML = `
+        <div class="flex justify-between">
+          <span class="flex items-center">
+            ${medalColor ? `<span class="w-4 h-4 rounded-full bg-${medalColor} inline-block mr-2"></span>` : ""}
+            ${player.name}
+          </span>
+          <span>${player.score} pts</span>
+        </div>
+        <div class="text-sm">
+          Matches Played: ${player.matchesPlayed} | Achievements: ${player.achievements} | Win Rate: ${player.winRate}
+        </div>`;
+      leaderboard.appendChild(listItem);
+    });
+
+    // Event listener for "See Full Leaderboard" button
+    document.getElementById('viewFullLeaderboard').addEventListener('click', () => {
+      leaderboard.innerHTML = ""; // Clear the current leaderboard
+
+      leaderboardData.forEach((player) => {
+        const listItem = document.createElement('li');
+        listItem.className = 'flex flex-col bg-gray-700 p-4 rounded space-y-2';
+        listItem.innerHTML = `
+          <div class="flex justify-between">
+            <span>${player.name}</span>
+            <span>${player.score} pts</span>
+          </div>
+          <div class="text-sm">
+            Matches Played: ${player.matchesPlayed} | Achievements: ${player.achievements} | Win Rate: ${player.winRate}
+          </div>`;
+        leaderboard.appendChild(listItem);
+      });
+    });
+  </script>
+</body>
+</html>

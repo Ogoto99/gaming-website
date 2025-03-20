@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/e3f4715c40.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const TAX_RATE = 0.05;
+            const cartContainer = document.getElementById("cart-container");
+            const subtotalElement = document.getElementById("subtotal");
+            const taxElement = document.getElementById("tax");
+            const totalElement = document.getElementById("total");
+            const confirmPurchaseButton = document.getElementById("confirm-purchase-btn");
+            const paymentModal = document.getElementById("payment-modal");
+            const closeModalButton = document.getElementById("close-modal-btn");
+            const paymentOptionsForm = document.getElementById("payment-options-form");
+
+            const updateCart = () => {
+                let subtotal = 0;
+
+                cartContainer.innerHTML = ""; // Clear previous items
+                if (cartItems.length === 0) {
+                    cartContainer.innerHTML = `
+                        <p class="text-gray-600 text-center">Your cart is empty. 
+                        Start adding items from <a href="games.html" class="text-blue-600 hover:underline">Games</a>.</p>`;
+                } else {
+                    cartItems.forEach((item, index) => {
+                        const itemElement = document.createElement("div");
+                        itemElement.classList.add("flex", "justify-between", "p-4", "bg-gray-50", "rounded-lg", "shadow-sm", "items-center");
+                        itemElement.innerHTML = `
+                            <div>
+                                <p class="text-lg font-semibold text-gray-900">${item.name}</p>
+                                <p class="text-gray-600">Platform: ${item.platform} | 
+                                    Qty: <input data-index="${index}" class="quantity-input w-12 text-center border rounded" type="number" value="${item.quantity}" min="1">
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <p class="text-lg font-semibold text-gray-800">$${(item.price * item.quantity).toFixed(2)}</p>
+                                <button data-index="${index}" class="remove-btn text-red-600 font-bold">Remove</button>
+                            </div>
+                        `;
+                        cartContainer.appendChild(itemElement);
+                        subtotal += item.price * item.quantity;
+                    });
+                }
+
+                const tax = subtotal * TAX_RATE;
+                const total = subtotal + tax;
+
+                subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+                taxElement.textContent = `$${tax.toFixed(2)}`;
+                totalElement.textContent = `$${total.toFixed(2)}`;
+            };
+
+            // Update item quantity
+            cartContainer.addEventListener("change", (e) => {
+                if (e.target.classList.contains("quantity-input")) {
+                    const index = e.target.dataset.index;
+                    cartItems[index].quantity = parseInt(e.target.value);
+                    localStorage.setItem("cart", JSON.stringify(cartItems)); // Save updates to localStorage
+                    updateCart();
+                }
+            });
+
+            // Remove items from cart
+            cartContainer.addEventListener("click", (e) => {
+                if (e.target.classList.contains("remove-btn")) {
+                    const index = e.target.dataset.index;
+                    cartItems.splice(index, 1); // Remove item
+                    localStorage.setItem("cart", JSON.stringify(cartItems)); // Save updated cart to localStorage
+                    updateCart();
+                }
+            });
+
+            // Open payment modal
+            confirmPurchaseButton.addEventListener("click", () => {
+                if (cartItems.length === 0) {
+                    alert("Your cart is empty! Add some items before proceeding.");
+                    return;
+                }
+                paymentModal.classList.remove("hidden");
+            });
+
+            // Close payment modal
+            closeModalButton.addEventListener("click", () => {
+                paymentModal.classList.add("hidden");
+            });
+
+            // Handle payment submission
+            paymentOptionsForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                paymentModal.classList.add("hidden");
+
+                // Display pop-up success message
+                alert("Thank you for your purchase! Your order is being processed, and you will receive a confirmation shortly.");
+                
+                // Clear the cart after successful payment
+                cartItems = [];
+                localStorage.setItem("cart", JSON.stringify(cartItems));
+                updateCart();
+            });
+
+            updateCart(); // Initialize the cart
+        });
+    </script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="max-w-7xl mx-auto py-12 px-6">
+        <!-- Quick Links -->
+        <nav class="flex justify-between items-center bg-gray-800 text-white p-4 rounded-lg mb-8">
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="hover:underline">Home</a></li>
+                <li><a href="games.html" class="hover:underline">Games</a></li>
+                <li><a href="contact.html" class="hover:underline">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold text-center text-gray-900">Checkout</h1>
+            <p class="text-center text-gray-600">Review your cart and complete your purchase</p>
+        </header>
+
+        <!-- Cart Section -->
+        <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Your Cart</h2>
+            <div id="cart-container" class="space-y-4"></div>
+        </div>
+
+        <!-- Checkout Section -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Order Summary</h2>
+            <div class="flex items-center justify-between mb-4">
+                <p class="text-gray-800">Subtotal:</p>
+                <p id="subtotal" class="text-gray-900 font-bold">$0.00</p>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+                <p class="text-gray-800">Tax:</p>
+                <p id="tax" class="text-gray-900 font-bold">$0.00</p>
+            </div>
+            <div class="flex items-center justify-between mb-6">
+                <p class="text-xl font-semibold text-gray-800">Total:</p>
+                <p id="total" class="text-xl font-bold text-gray-900">$0.00</p>
+            </div>
+            <div class="flex space-x-4">
+                <a href="games.html" class="w-1/2 text-center bg-gray-600 text-white py-3 rounded-lg shadow-md hover:bg-gray-700 transition">
+                    Continue Shopping
+                </a>
+                <button id="confirm-purchase-btn" class="w-1/2 bg-blue-600 text-white py-3 rounded-lg shadow-md hover:bg-blue-700 transition">
+                    Confirm Purchase
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold">Choose a Payment Method</h2>
+                <button id="close-modal-btn" class="text-red-500 hover:text-red-600">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <form id="payment-options-form">
+                <div class="mb-4">
+                    <label for="payment-method" class="block text-gray-700 font-bold mb-2">Payment Options:</label>
+                    <select id="payment-method" class="w-full border-gray-300 rounded-lg" required onchange="showPaymentInput()">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="m-pesa">M-Pesa</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+                <div id="payment-details" class="mb-4 hidden">
+                    <label id="payment-label" class="block text-gray-700 font-bold mb-2"></label>
+                    <input id="payment-input" type="text" class="w-full border-gray-300 rounded-lg" required />
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                    Submit Payment
+                </button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function showPaymentInput() {
+            const paymentMethod = document.getElementById('payment-method').value;
+            const paymentDetails = document.getElementById('payment-details');
+            const paymentLabel = document.getElementById('payment-label');
+            const paymentInput = document.getElementById('payment-input');
+    
+            paymentDetails.classList.remove('hidden'); // Show the input field
+    
+            if (paymentMethod === 'credit-card') {
+                paymentLabel.textContent = 'Enter Credit Card Number:';
+                paymentInput.type = 'text';
+                paymentInput.placeholder = 'e.g., 1234 5678 9123 4567';
+            } else if (paymentMethod === 'm-pesa') {
+                paymentLabel.textContent = 'Enter M-Pesa Phone Number:';
+                paymentInput.type = 'tel';
+                paymentInput.placeholder = 'e.g., +254 712 345 678';
+            } else if (paymentMethod === 'paypal') {
+                paymentLabel.textContent = 'Enter PayPal Account Email:';
+                paymentInput.type = 'email';
+                paymentInput.placeholder = 'e.g., email@example.com';
+            }
+        }
+    </script>        
+</body>
+
+<footer class="bg-gray-800 py-8">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">About Gaming Nexus</h3>
+            <p class="text-gray-400 text-sm mt-2">Your ultimate destination for gaming adventures, news, and events.</p>
+        </div>
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">Quick Links</h3>
+            <ul class="mt-2 space-y-2 text-gray-400">
+                <li><a href="games.html" class="hover:text-pink-500">Games</a></li>
+                <li><a href="community.html" class="hover:text-pink-500">Community</a></li>
+                <li><a href="events.html" class="hover:text-pink-500">Events</a></li>
+                <li><a href="contact.html" class="hover:text-pink-500">Contact Us</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-lg font-bold text-pink-500">Stay Connected</h3>
+            <form class="flex flex-col mt-2">
+                <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                <button class="bg-pink-500 hover:bg-pink-600 text-white mt-2 px-4 py-2 rounded">Subscribe</button>
+            </form>
+            <div class="flex space-x-4 mt-4">
+                <a href="https://www.facebook.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-facebook"></i><!-- Facebook Icon -->
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-x-twitter"></i><!-- Twitter Icon -->
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-instagram"></i><!-- Instagram Icon -->
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-youtube"></i><!-- YouTube Icon -->
+                </a>
+                <a href="https://www.discord.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-discord"></i><!-- Discord Icon -->
+                </a>
+                <a href="https://www.reddit.com" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl">
+                    <i class="fa-brands fa-square-reddit"></i><!-- Reddit Icon -->
+                </a>
+            </div>                
+        </div>
+    </div>
+</footer>    
