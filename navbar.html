@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamingZone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+<header class="bg-blue-700 text-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+        <!-- Logo -->
+        <div class="text-2xl font-bold">
+            <a href="index.html" class="hover:text-gray-300">ShadowCircuit</a>
+        </div>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-6">
+            <a href="index.html" class="hover:text-gray-200">Home</a>
+            <a href="games.html" class="hover:text-gray-200">Games</a>
+            <div class="relative group">
+                <a href="categories.html" class="hover:text-gray-200">Categories</a>
+                <div class="absolute hidden group-hover:block bg-white text-blue-700 rounded shadow-lg mt-2 w-48">
+                    <a href="action.html" class="block px-4 py-2 hover:bg-blue-100">Action</a>
+                    <a href="rpg.html" class="block px-4 py-2 hover:bg-blue-100">RPG</a>
+                    <a href="fps.html" class="block px-4 py-2 hover:bg-blue-100">FPS</a>
+                </div>
+            </div>
+            <a href="community.html" class="hover:text-gray-200">Community</a>
+            <a href="contact.html" class="hover:text-gray-200">Contact</a>
+        </nav>
+        <!-- Profile Icon -->
+        <div class="hidden md:flex items-center">
+            <a href="profile.html" class="relative text-white hover:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5S9.5 8.38 9.5 7s1.12-2.5 2.5-2.5zm0 7c-2.76 0-5 2.24-5 5v.5h10v-.5c0-2.76-2.24-5-5-5z"></path>
+                </svg>
+            </a>
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <button id="menuToggle" class="md:hidden focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden bg-blue-600 md:hidden">
+        <a href="index.html" class="hover:text-gray-200">Home</a>
+        <a href="games.html" class="block px-4 py-2 text-white hover:bg-blue-500">Games</a>
+        <div class="relative">
+            <a href="categories.html" class="block px-4 py-2 text-white hover:bg-blue-500">Categories</a>
+            <div class="bg-blue-700 px-4">
+                <a href="action.html" class="block py-1 text-white hover:bg-blue-500">Action</a>
+                <a href="rpg.html" class="block py-1 text-white hover:bg-blue-500">RPG</a>
+                <a href="fps.html" class="block py-1 text-white hover:bg-blue-500">FPS</a>
+            </div>
+        </div>
+        <a href="community.html" class="block px-4 py-2 text-white hover:bg-blue-500">Community</a>
+        <a href="contact.html" class="block px-4 py-2 text-white hover:bg-blue-500">Contact</a>
+    </div>
+</header>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Add any custom CSS if needed */
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+
+    <!-- Navbar -->
+    <header class="bg-gray-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-green-500">GameQuest</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="hover:text-green-400">Home</a></li>
+                    <li><a href="leaderboards.html" class="hover:text-green-400">Leaderboards</a></li>
+                    <li><a href="store.html" class="hover:text-green-400">Store</a></li>
+                    <li><a href="profile.html" class="text-green-400">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <main class="max-w-5xl mx-auto mt-8 px-4">
+        <section id="profileCard" class="bg-gray-800 rounded-lg p-6 shadow-md">
+            <div class="flex items-center space-x-6">
+                <img src="https://via.placeholder.com/150" alt="Gamer Avatar" id="avatar" class="rounded-full h-32 w-32 border-4 border-green-500">
+                <div>
+                    <h2 id="playerName" class="text-4xl font-bold">PlayerName123</h2>
+                    <p id="playerInfo" class="text-sm text-gray-400">Level 45 | Warrior Class</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="bg-gray-800 rounded-lg p-6 shadow-md mt-6">
+            <h3 class="text-2xl font-bold mb-4">Player Statistics</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
+                    <h4 class="text-lg font-bold">Games Played</h4>
+                    <p id="gamesPlayed" class="text-3xl font-bold text-green-500">325</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
+                    <h4 class="text-lg font-bold">Achievements</h4>
+                    <p id="achievements" class="text-3xl font-bold text-green-500">57</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg shadow-lg">
+                    <h4 class="text-lg font-bold">Win Rate</h4>
+                    <p id="winRate" class="text-3xl font-bold text-green-500">72%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Friends List Section -->
+        <section id="friendsList" class="bg-gray-800 rounded-lg p-6 shadow-md mt-6">
+            <h3 class="text-2xl font-bold mb-4">Friends List</h3>
+            <ul class="space-y-4">
+                <li class="flex items-center space-x-4">
+                    <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full h-12 w-12">
+                    <p class="font-bold">GameBuddy1</p>
+                </li>
+                <li class="flex items-center space-x-4">
+                    <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full h-12 w-12">
+                    <p class="font-bold">ProGamer92</p>
+                </li>
+                <li class="flex items-center space-x-4">
+                    <img src="https://via.placeholder.com/50" alt="Friend Avatar" class="rounded-full h-12 w-12">
+                    <p class="font-bold">EliteHunterX</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 bg-gray-800 py-4">
+        <div class="max-w-7xl mx-auto text-center text-gray-500">
+            <p>&copy; 2025 GameQuest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dynamic data
+            const profileData = {
+                playerName: "ShadowWarrior99",
+                playerInfo: "Level 52 | Mage Class",
+                avatarUrl: "https://via.placeholder.com/150",
+                stats: {
+                    gamesPlayed: 412,
+                    achievements: 68,
+                    winRate: "80%"
+                }
+            };
+
+            // Update profile section
+            document.getElementById('playerName').textContent = profileData.playerName;
+            document.getElementById('playerInfo').textContent = profileData.playerInfo;
+            document.getElementById('avatar').src = profileData.avatarUrl;
+
+            // Update stats section
+            document.getElementById('gamesPlayed').textContent = profileData.stats.gamesPlayed;
+            document.getElementById('achievements').textContent = profileData.stats.achievements;
+            document.getElementById('winRate').textContent = profileData.stats.winRate;
+        });
+    </script>
+</body>
+</html>

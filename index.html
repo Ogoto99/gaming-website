@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Nexus</title>
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <!-- Dynamic Navbar -->
+    <div id="navbar" class="bg-gray-800 shadow-md">
+        <nav class="container mx-auto flex justify-between items-center p-4">
+            <a href="index.html" class="text-xl font-bold text-pink-500 hover:text-white">Gaming Nexus</a>
+            <ul class="hidden md:flex space-x-8 items-center">
+                <li><a href="games.html" class="text-gray-300 hover:text-pink-500">Games</a></li>
+                <li><a href="news.html" class="text-gray-300 hover:text-pink-500">News</a></li>
+                <li><a href="community.html" class="text-gray-300 hover:text-pink-500">Community</a></li>
+                <li><a href="contact.html" class="text-gray-300 hover:text-pink-500">Contact</a></li>
+                <!-- Profile Section -->
+                <li class="flex items-center">
+                    <a href="profile.html" class="flex items-center text-gray-300 hover:text-pink-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 18.121A4 4 0 0116.879 18.12M15 11a4 4 0 11-8 0m-4 0a8 8 0 1116 0M8 16h8M8 20h8"></path>
+                        </svg>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+            <button id="menu-toggle" class="text-gray-300 md:hidden focus:outline-none">
+                &#9776;
+            </button>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-96" style="background-image: url('hero-image.jpg');">
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Explore Epic Adventures</h1>
+                <p class="text-lg text-gray-300">Join the ultimate gaming universe and conquer the impossible!</p>
+                <a href="sign-up.html" class="mt-4 inline-block bg-pink-500 text-white px-6 py-3 rounded-full hover:bg-pink-600">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game News Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-semibold text-pink-500 mb-6">Latest Gaming News</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-gray-800 p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                    <h3 class="text-xl font-semibold mb-3">Upcoming Game Releases</h3>
+                    <p class="text-gray-400">Get ready for the most anticipated games of the year!</p>
+                    <a href="news-release.html" class="text-pink-500 hover:underline mt-2 inline-block">Read More</a>
+                </article>
+                <article class="bg-gray-800 p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                    <h3 class="text-xl font-semibold mb-3">Pro Player Tips</h3>
+                    <p class="text-gray-400">Level up your gaming skills with expert advice!</p>
+                    <a href="news-tips.html" class="text-pink-500 hover:underline mt-2 inline-block">Read More</a>
+                </article>
+                <article class="bg-gray-800 p-6 rounded-lg shadow-md hover:scale-105 transform transition">
+                    <h3 class="text-xl font-semibold mb-3">Community Highlights</h3>
+                    <p class="text-gray-400">Explore what’s happening in the gaming community.</p>
+                    <a href="news-community.html" class="text-pink-500 hover:underline mt-2 inline-block">Read More</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">About Gaming Nexus</h3>
+                <p class="text-gray-400 text-sm mt-2">Your ultimate destination for gaming adventures, news, and events.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">Quick Links</h3>
+                <ul class="mt-2 space-y-2 text-gray-400">
+                    <li><a href="games.html" class="hover:text-pink-500">Games</a></li>
+                    <li><a href="community.html" class="hover:text-pink-500">Community</a></li>
+                    <li><a href="events.html" class="hover:text-pink-500">Events</a></li>
+                    <li><a href="contact.html" class="hover:text-pink-500">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-pink-500">Stay Connected</h3>
+                <form class="flex flex-col mt-2">
+                    <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded bg-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <button class="bg-pink-500 hover:bg-pink-600 text-white mt-2 px-4 py-2 rounded">Subscribe</button>
+                </form>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="hover:text-pink-500">[FB]</a>
+                    <a href="#" class="hover:text-pink-500">[TW]</a>
+                    <a href="#" class="hover:text-pink-500">[IG]</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Navigation -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            const nav = document.querySelector('#navbar ul');
+            nav.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
